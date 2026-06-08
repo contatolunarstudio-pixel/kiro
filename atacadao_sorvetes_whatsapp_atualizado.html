@@ -48,10 +48,14 @@
   .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
   .hero-img-area {
     position: relative; z-index: 1; width: 100%; aspect-ratio: 3/4; max-height: 400px;
-    border: 2px dashed rgba(244,130,31,0.3);
-    display: flex; align-items: center; justify-content: center; flex-direction: column;
-    gap: 10px; color: rgba(244,130,31,0.4); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    overflow: hidden; border-radius: 4px;
   }
+  .carousel { position: relative; width: 100%; height: 100%; }
+  .carousel img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
+  }
+  .carousel img.active { opacity: 1; }
 
   #numeros { background: var(--orange); padding: 12px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
   .num-item { text-align: center; padding: 12px 16px; border-right: 1px solid rgba(255,255,255,0.2); }
@@ -151,8 +155,22 @@
     </div>
   </div>
   <div class="hero-img-area">
-    <div style="font-size: 48px;">🍦</div>
-    <span>Sua imagem aqui</span>
+    <div class="carousel">
+      <img src="Atacad%C3%A3o/2024-09-11-eeed2a6c.jpg" class="active" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-09-12-ab33f178.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-17321510.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-282b43c1.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-31d56fe6.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-4f809228.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-57ddce53.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-6119a36.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-a5704a16.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-b5a1edd1.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-d402898d.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-e6c09632.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-ea460e61.jpg" alt="Atacadão de Sorvetes">
+      <img src="Atacad%C3%A3o/2024-12-06-f1a4e9c1.jpg" alt="Atacadão de Sorvetes">
+    </div>
   </div>
 </section>
 
@@ -265,6 +283,20 @@
   <div class="footer-txt">© 2025 Atacadão de Sorvetes • Todos os direitos reservados</div>
   <div class="footer-txt" style="color: #f4821f; font-weight: 600;">#VEMPROATACADAO</div>
 </footer>
+
+<script>
+// Carousel automático - troca a cada 3 segundos
+(function() {
+  const imgs = document.querySelectorAll('.carousel img');
+  let current = 0;
+
+  setInterval(function() {
+    imgs[current].classList.remove('active');
+    current = (current + 1) % imgs.length;
+    imgs[current].classList.add('active');
+  }, 3000);
+})();
+</script>
 
 <script>
 // Inject real images via base64
